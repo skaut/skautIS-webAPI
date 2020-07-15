@@ -1,0 +1,128 @@
+FORMAT: 1A
+HOST: https://test-is.skaut.cz/
+
+
+# SkautIS API
+
+popisek
+
+## Vzdělávací akce [/EventEducation]
+
+### Seznam [GET /EventEducation/all?ID_EventEducationType={ID_EventEducationType}&ID_EventEducationGroup={ID_EventEducationGroup}&CanSignUp={CanSignUp}&IsForester={IsForester}&IsChildFriendly={IsChildFriendly}&IsAgeRestricted={IsAgeRestricted}&ID={ID}&ID_Login={ID_Login}&ID_Application={ID_Application}  ]
+
++ Parameters
+    + ID_EventEducationType (number) - Typ VzA
+    + ID_EventEducationGroup(number) - Skupina VzA
+    + CanSignUp (boolean) - Otevřené přihlašování
+    + IsForester (boolean) - Je lesní kurz
+    + IsChildFriendly (boolean) - Je vhodná pro rodiče s dětmi
+    + IsAgeRestricted (boolean) - Je věkově omezená
+    + ID (number) - ID VzA
+    + ID_Login (string) - Přhlašovací token
+    + ID_Application (string) - ID aplikace
+
++ Response 200 (application/json)
+    + Attributes (array[EventEducation])
+
+
+### Detail [GET /EventEducation/Detail?ID_EventEducationCourse={ID_EventEducationCourse}&ID_Login={ID_Login}&ID_Application={ID_Application}]
++ Parameters
+    + ID_EventEducationCourse (integer) - ID kurzu VzA
+    + ID_Login (string) - Přhlašovací token
+    + ID_Application (string) - ID aplikace
+
++ Response 200 (application/json)
+    + Attributes (EventEducationDetail)
+
+## Instruktoři [/Instructor]
+
+### Seznam [GET /Instructor/All?ID_EventEducation={ID_EventEducation}&ID_Login={ID_Login}&ID_Application={ID_Application}]
++ Parameters
+    + ID_EventEducation (integer) - ID vzdělávací akce
+    + ID_Login (string) - Přhlašovací token
+    + ID_Application (string) - ID aplikace
+
++ Response 200 (application/json)
+    + Attributes (array[InstructorBase])
+
+# Data Structures
+
+## CourseBase (object)
++ ID: 1 (number)
++ DisplayName: sample string 2 (string)
+
+## ExamBase (object)
++ ID: 1 (number)
++ ID_QualificationType: 2 (number)
++ QualificationType: sample string 3 (string)
++ Capacity: 1 (number)
++ Date: 2020-07-15T14:06:33.6409533+02:00 (string) - datetime ve formátu RFC3339
+
+## InstructorBase(object)
++ ID: 1 (number)
++ ID_Person: 1 (number)
++ DisplayName: sample string 2 (string)
++ Role: sample string 3 (string)
++ Qualifications: sample string 4 (string)
++ EventFocus: sample string 5 (string)
++ ScoutExperience: sample string 6 (string)
++ ProfessionalExperience: sample string 7 (string)
++ ID_DocumentPhoto: 1 (number)
+
+
+## EventEducation (object)
++ ID: 1 (number)
++ ID_EventEducationCourse: 2 (number)
++ ID_DocumentLogo: 1 (number)
++ DisplayName: sample string 3 (string)
++ ShortDescription: sample string 4 (string)
++ From: 2020-07-15T13:35:36.7598497+02:00 (string) - datetime ve formátu RFC3339
++ To: 2020-07-15T13:35:36.7598497+02:00 (string) - datetime ve formátu RFC3339
++ Days: 1 (number)
++ LoginFrom: 2020-07-15T13:35:36.7598497+02:00 (string) - datetime ve formátu RFC3339
++ LoginTo: 2020-07-15T13:35:36.7598497+02:00 (string) - datetime ve formátu RFC3339
++ LoginSkautis: true (boolean)
++ LoginLocation: sample string 5 (string)
++ Web: sample string 6 (string)
++ Capacity: 1 (number)
++ CapacitySubstitute: 1 (number)
++ CapacityFilled: 1 (number)
++ ID_Occupancy: 1 (number)
++ Occupancy: sample string 7 (string)
++ OccupancyKey: sample string 8 (string)
++ NextOccurenceYear: 1 (number)
++ IsForester: true (boolean)
++ IsChildFriendly: true (boolean)
++ IsAgeRestricted: true (boolean)
+
+## EventEducationDetail (EventEducation)
++ Description: sample string 1 (string)
++ Email: sample string 2 (string)
++ Courses (array[CourseBase])
++ Exams (array[ExamBase])
++ Instructors (array[InstructorBase])
++ IllustrativePhoto: [1, 2]
++ PhotoGallery: sample string 3 (string)
++ ID: 4 (number)
++ ID_EventEducationCourse: 5 (number)
++ ID_DocumentLogo: 1 (number)
++ DisplayName: sample string 6 (string)
++ ShortDescription: sample string 7 (string)
++ From: 2020-07-15T14:06:33.6409533+02:00 (string) - datetime ve formátu RFC3339
++ To: 2020-07-15T14:06:33.6409533+02:00 (string) - datetime ve formátu RFC3339
++ Days: 1 (number)
++ LoginFrom: 2020-07-15T14:06:33.6409533+02:00 (string) - datetime ve formátu RFC3339
++ LoginTo: 2020-07-15T14:06:33.6409533+02:00 (string) - datetime ve formátu RFC3339
++ LoginSkautis: true (boolean)
++ LoginLocation: sample string 8 (string)
++ Web: sample string 9 (string)
++ Capacity: 1 (number)
++ CapacitySubstitute: 1 (number)
++ CapacityFilled: 1 (number)
++ ID_Occupancy: 1 (number)
++ Occupancy: sample string 10 (string)
++ OccupancyKey: sample string 11 (string)
++ NextOccurenceYear: 1 (number)
++ IsForester: true (boolean)
++ IsChildFriendly: true (boolean)
++ IsAgeRestricted: true (boolean)
